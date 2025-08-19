@@ -1,4 +1,4 @@
-package com.aluracursos.screenmatch.service;
+package com.aluracursos.literalura.service;
 
 import java.io.IOException;
 import java.net.URI;
@@ -8,7 +8,9 @@ import java.net.http.HttpResponse;
 
 public class ConsumoAPI {
     public String obtenerDatos(String url){
-        HttpClient client = HttpClient.newHttpClient();
+        HttpClient client = HttpClient.newBuilder()
+                .followRedirects(HttpClient.Redirect.ALWAYS)
+                .build();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .build();
